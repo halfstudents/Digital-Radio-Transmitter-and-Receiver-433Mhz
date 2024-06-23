@@ -7,10 +7,10 @@ Radio technology is the best monitoring and control solution for small and long 
 Here is the DFrobot Gravity: Digital Wireless TX-RX pair. Based on 433Mhz RF communication technology, the module includes a transmitter and receiver and features the advantages of simple operation, high scalability, strong penetration, and ultra-low standby power consumption. These modules are used on a wide variety of applications that require wireless control, such as, remote control, wireless doorbell, wireless signal transmission, upgrading wired buttons to wireless buttons, etc.
 
 Basic Design approach:
+
 The module transmitter can be used without connecting to the microcontroller. After connecting the battery, you can directly use the switch button as the "trigger button" for signal transmission. For the code transmission purposes I made a shield using tactile switch buttons.
 
 This can be directly connected to the DFrobot transmitter board. This Transmitter receiver system is capable of taking 4 inputs, which makes 15 different combinations. This shield works on an active high logic. I used PCBWay services for making the shield. PCBWay is the best low cost solution for PCB prototyping, PCBA, Stencil, 3D and CNC services. Quote now using this link and get Free PCB coupons on first sign-up. Get 10 Pcs of high quality custom PCBs for just $5. https://www.pcbway.com/?from=circuitkicker
-https://www.pcbway.com/?from=circuitkicker
 
 In this tutorial first we have to configure the receiver with the transmitter. Because in RF transmission info can be easily stolen that’s why a otp based encoding scheme is used. To configure the transmitter and receiver I am using a basic approach of blink sketch in which two Arduino boards are required. Then to actually use the TX-RX device I built a remote shield for the transmitter. This time only one Arduino is required, no need of microcontroller for the transmitter unit.
 
@@ -18,9 +18,13 @@ In this tutorial first we have to configure the receiver with the transmitter. B
 Components Required:
 
 DFrobot Gravity: Digital Wireless TX-Rx pair // https://www.dfrobot.com/product-2434.html
+
 Remote control shield PCB from PCBWAY
+
 5V battery
+
 Connection wires
+
 Arduino Microcontroller
 
 Encoding Scheme:
@@ -28,17 +32,27 @@ Encoding Scheme:
 The product adopts the EV1527 encoding format and the four-digit key value code can be combined into 15 different states.The receiver has a corresponding pairing function to ensure that only the paired transmitting device can control the receiver. The receiver supports four working modes: inching, latching, self-locking, and interlocking. It can be paired with EV1527 coded transmitters. One receiver can be paired with up to 32 transmitters. The transmitter and receiver support "one-transmit and multiple-receive" or "one-receive and multiple-transmit" after pairing.
 
 Application:
+
 Wireless door bell
+
 Remote control
+
 Deployed as a sensor signal acquisition node
+
 Wired button upgrade wireless button
 
-Features
+Features:
+
 15 button states of the transmitter
+
 Pairing function for the receiver
+
 Support one-transmit and multiple-receive/one-receive and multiple-transmit
+
 Multiple working modes: inching, latching, self-locking, and interlocking
+
 Working voltage: 3.3～5.0V DC
+
 Working frequency: 433Mhz
 
 Paring Method of TX-RX:
@@ -97,9 +111,11 @@ In the below given sketch D2 to D5 of Arduino is used as input port and D6 to D9
 To control any other device like DC motors, heavy load, A PWM based controller can be used which acts as a middle unit. Receive the signals from the RX board and give the respective output of the DC motor.
 
 Code for Receiver:
+
 The main section of the repository contain receiver code. 
 
 Mode switch:
+
 The receiver is in inching mode by default, the following examples all take inching mode as an example. If there is no requirement for using other modes, you can skip this step. In the above example I used the receiver in Inching mode, which is default mode.
 
 Inching: After D0 receives the signal once, it stays high until D1~D3 receive the signal
