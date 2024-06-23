@@ -55,39 +55,59 @@ Working voltage: 3.3～5.0V DC
 
 Working frequency: 433Mhz
 
-Paring Method of TX-RX:
+Pairing Method of TX-RX:
 
 The transmitter and receiver Arduino sketch is given below. Upload the sketch in the Arduino. Connect the transmitter and receiver according to the above given schematics. After powering up the system press and hold  the onboard tactile switch of the receiver module for 1.5sec. Wait for 3-4 seconds and keep the transmitter On Blue led will blink twice and stop which is indication of successful pairing.
 
 //Transmitter:
+
 #define Button_D2 2  //Arduino
+
 void setup() {
+
   pinMode(LED_BUILTIN, OUTPUT);
+  
 }
 
 void loop() {
+
   digitalWrite(Button_D2, HIGH);
+  
   delay(1000);
+  
   digitalWrite(Button_D2, LOW);
+  
   delay(1000);
+  
 }
 
 
 /////////////////////////////////////////////
 
 
+
 //Receiver:
+
 #define Button_D2 2 //Arduino
+
 void setup() {
+
     Serial.begin(115200);
     pinMode(Button_D2, INPUT);
 }
+
 void loop() {
+
     if (digitalRead(Button_D2)) {
+    
         Serial.println("Pressed：D2");
+        
         delay(1000);
+        
     }
+    
 }
+
 
 Connection:
 
